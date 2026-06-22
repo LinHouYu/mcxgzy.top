@@ -912,3 +912,21 @@
         contactForm.init();
     });
 })();
+
+function copyQQ(qqNumber, element) {
+    navigator.clipboard.writeText(qqNumber).then(() => {
+        const originalText = element.innerText;
+        element.innerText = 'QQ号已复制!';
+        element.style.backgroundColor = '#4CAF50'; 
+        element.style.color = '#fff';
+        
+        // 2秒后恢复原状
+        setTimeout(() => {
+            element.innerText = originalText;
+            element.style.backgroundColor = ''; 
+            element.style.color = '';
+        }, 2000);
+    }).catch(err => {
+        alert('复制失败，请手动添加QQ: ' + qqNumber);
+    });
+}
