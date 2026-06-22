@@ -930,3 +930,17 @@ function copyQQ(qqNumber, element) {
         alert('复制失败，请手动添加QQ: ' + qqNumber);
     });
 }
+
+function copyGroupNumber(text, btnElement) {
+    navigator.clipboard.writeText(text).then(() => {
+        const originalIcon = btnElement.innerHTML;
+        btnElement.innerHTML = '<span style="font-size: 12px; color: #4CAF50; font-weight: bold; white-space: nowrap;">已复制</span>';
+        
+        // 2秒后恢复成原来的 SVG 图标
+        setTimeout(() => {
+            btnElement.innerHTML = originalIcon;
+        }, 2000);
+    }).catch(err => {
+        alert('复制失败，请手动选择复制: ' + text);
+    });
+}
