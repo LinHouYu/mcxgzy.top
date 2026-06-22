@@ -934,13 +934,18 @@ function copyQQ(qqNumber, element) {
 function copyGroupNumber(text, btnElement) {
     navigator.clipboard.writeText(text).then(() => {
         const originalIcon = btnElement.innerHTML;
-        btnElement.innerHTML = '<span style="font-size: 12px; color: #4CAF50; font-weight: bold; white-space: nowrap;">已复制</span>';
+        btnElement.innerHTML = `
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 6L9 17L4 12" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        `;
         
-        // 2秒后恢复成原来的 SVG 图标
+        // 2秒后恢复成原来的复制 SVG 图标
         setTimeout(() => {
             btnElement.innerHTML = originalIcon;
         }, 2000);
     }).catch(err => {
+        // 如果浏览器不支持或复制失败，弹窗提示
         alert('复制失败，请手动选择复制: ' + text);
     });
 }
