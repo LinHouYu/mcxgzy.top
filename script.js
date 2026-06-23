@@ -949,3 +949,30 @@ function copyGroupNumber(text, btnElement) {
         alert('复制失败，请手动选择复制: ' + text);
     });
 }
+
+async function downloadLatestRelease() {
+    const btn = event.target;
+    const originalText = btn.innerText;
+    btn.innerText = "正在获取最新版本...";
+
+    try {
+        const response = await fetch('https://api.github.com/repos/LinHouYu/mcxgzy.top/releases/latest');
+        const data = await response.json();
+
+        const zipAsset = data.assets.find(asset => asset.name.endsWith('.zip'));
+
+        if (zipAsset) {
+            window.location.href = zipAsset.browser_download_url;
+            btn.innerText = "开始下载！";
+            
+            setTimeout(() => { btn.innerText = originalText; }, 2000);
+        } else {
+            alert("抱歉，在最新版本中没有找到 .zip 格式的整合包文件。");
+            btn.innerText = originalText;
+        }
+    } catch (error) {
+        console.error("获取更新失败:", error);
+        alert("获取最新版本失败，请检查网络或稍后再试。");
+        btn.innerText = originalText;
+    }
+}
