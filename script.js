@@ -976,3 +976,30 @@ async function downloadLatestRelease() {
         btn.innerText = originalText;
     }
 }
+
+async function downloadLatestHMCL(btn) {
+    const originalText = btn.innerText;
+    btn.innerText = "正在获取最新启动器...";
+
+    try {
+        const response = await fetch('https://api.github.com/repos/HMCL-dev/HMCL/releases/latest');
+        const data = await response.json();
+
+        const exeAsset = data.assets.find(asset => asset.name.endsWith('.exe'));
+
+        if (exeAsset) {
+            window.location.href = exeAsset.browser_download_url;
+            btn.innerText = "开始下载！";
+
+            setTimeout(() => { btn.innerText = originalText; }, 2000);
+        } else {
+            alert("抱歉，在最新版本中没有找到 .exe 格式的启动器。");
+            btn.innerText = originalText;
+        }
+    } catch (error) {
+        console.error("获取启动器失败:", error);
+        alert("获取最新版本失败，将为您跳转至 HMCL 官网下载。");
+        window.open('https://hmcl.huangyuhui.net/', '_blank'); 
+        btn.innerText = originalText;
+    }
+}
