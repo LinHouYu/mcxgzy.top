@@ -408,8 +408,8 @@ body.has-announcement-popup {
 .step-card:hover .step-icon { background: var(--accent-green); color: var(--bg-dark); transform: scale(1.1) rotate(10deg); box-shadow: 0 0 20px rgba(0, 230, 118, 0.4); }
 .step-title { font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 15px; position: relative; z-index: 1; }
 .step-desc { font-size: 0.95rem; color: rgba(255, 255, 255, 0.7); margin-bottom: 25px; line-height: 1.6; position: relative; z-index: 1; min-height: 48px; }
-.btn-step { display: inline-block; padding: 10px 24px; background: var(--primary-color); color: var(--bg-dark); border-radius: 8px; font-weight: 700; font-size: 0.9rem; transition: var(--transition); border: none; cursor: pointer; text-decoration: none; position: relative; z-index: 1; }
-.btn-step:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2); }
+.btn-step { display: inline-block; padding: 10px 24px; background: #22c55e; color: #ffffff; border-radius: 8px; font-weight: 700; font-size: 0.9rem; transition: var(--transition); border: none; cursor: pointer; text-decoration: none; position: relative; z-index: 1; }
+.btn-step:hover { background: #16a34a; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(34, 197, 94, 0.4); }
 .server-address-box { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between; gap: 10px; position: relative; z-index: 1; }
 #help-ip { font-family: 'Consolas', monospace; color: var(--accent-green); font-weight: 700; letter-spacing: 0.5px; }
 .copy-btn { background: rgba(255, 255, 255, 0.1); border: none; color: #fff; width: 32px; height: 32px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); }
@@ -711,3 +711,4 @@ body.has-announcement-popup {
     align-items: center;
     justify-content: center;
 }
+
